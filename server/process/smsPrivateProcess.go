@@ -36,7 +36,6 @@ func (this *SmsPrivateProcess) SendPirvateMes(mes *message.Message) (err error) 
 		fmt.Println("SendGroupMes 序列化失败,", err)
 		return
 	}
-
 	this.SendMesPrivate(data, privateUserUp.Conn)
 	return
 }
