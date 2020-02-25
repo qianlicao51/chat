@@ -30,4 +30,6 @@ gen
 .idea/modules.xml
 .idea/vcs.xml
 client/main/client.exe
-pic/
+*.exe
+!/.idea/
+
