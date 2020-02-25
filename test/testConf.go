@@ -8,9 +8,9 @@ import (
 	"reflect"
 )
 
-var Cfgs= ini.Empty()
+var Cfgs = ini.Empty()
 
-func GetConf()  {
+func GetConf() {
 	err := ini.MapTo(Cfgs, "conf/conf.ini")
 	Cfgs, err := ini.Load("conf/conf.ini")
 	fmt.Println(Cfgs)
@@ -22,13 +22,12 @@ func GetConf()  {
 	fmt.Println(Cfgs.Section("client").Key("server_addr").String())
 	fmt.Println(Cfgs.Section("server").Key("ser_port").String())
 	fmt.Println(Cfgs.Section("redis").Key("redis_addr").String())
-	fmt.Println("==",reflect.TypeOf(Cfgs))
-
+	fmt.Println("==", reflect.TypeOf(Cfgs))
 
 }
 
 func main() {
 	GetConf()
-	fmt.Println(Cfgs,"--")
+	fmt.Println(Cfgs, "--")
 	log.Println(Cfgs.Section("redis").Key("redis_addr").String())
 }

@@ -1,13 +1,13 @@
 package process
 
 import (
+	"chat/client/utils"
+	"chat/common/message"
 	"encoding/base64"
 	"encoding/json"
 	"fmt"
 	"io"
 	"os"
-	"chat/client/utils"
-	"chat/common/message"
 )
 
 /********************************************

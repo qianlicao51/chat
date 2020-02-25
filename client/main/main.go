@@ -1,9 +1,9 @@
 package main
 
 import (
+	"chat/client/process"
 	"fmt"
 	"os"
-	"chat/client/process"
 )
 
 var (
@@ -27,6 +27,7 @@ func main() {
 		fmt.Scanf("%d\n", &key)
 
 		switch key {
+		//登录
 		case 1:
 			fmt.Println("登陆聊天系统")
 			fmt.Println("输入用户ID")
@@ -41,7 +42,8 @@ func main() {
 			} else {
 				fmt.Println("~登录失败原因~", err)
 			}
-			//loop = false
+		//loop = false
+		//注册
 		case 2:
 			fmt.Println("-----注册用户-----")
 			fmt.Println("输入用户ID")

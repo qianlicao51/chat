@@ -77,14 +77,13 @@ func serverProcessMes(conn net.Conn) {
 		Buf:  [8064]byte{},
 	}
 	for {
-		fmt.Println("客户端正在等待服务器发送的消息")
 		mes, err := tf.ReadPkg()
 		if err != nil {
 			fmt.Println("服务器端出现错误 ", err)
 			return
 		}
-		//	读取到消息，进行下一步处理
-		fmt.Printf("msg=%v\n", mes)
+		//	读取到服务器发送来的消息，进行下一步处理
+		//fmt.Printf("msg=%v\n", mes)
 		//	读取消息，逻辑处理
 		switch mes.Type {
 		case message.NotifyUserStatusMesType:
@@ -104,6 +103,10 @@ func serverProcessMes(conn net.Conn) {
 			outPutGroupMes(&mes)
 		case message.SmsPrivateMesType: // 私聊消息
 			outPutPrivateMes(&mes)
+		case message.HeartBeatMesType:
+			//服务器有客户端的conn,如果数据发送不出去就是 客户端失去联系，不需要等待客户端回应
+			//因此此类型信息不响应
+			//fmt.Println("心跳检测信息:",mes)
 		default:
 			fmt.Println("服务器返回的是未知类型")
 		}

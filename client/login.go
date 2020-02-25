@@ -1,12 +1,12 @@
 package main
 
 import (
+	"chat/common/message"
+	"chat/server/utils"
 	"encoding/binary"
 	"encoding/json"
 	"fmt"
 	"net"
-	"chat/common/message"
-	"chat/server/utils"
 )
 
 //登陆校验

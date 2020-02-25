@@ -9,7 +9,7 @@ const (
 	INI_NAME_SERVER = "server"
 	SERVER_ADDR     = "ser_port"
 	//文件包保存位置
-	SERVER_SAVEFILE="filePath"
+	SERVER_SAVEFILE = "filePath"
 
 	//客户端配置文件常量
 	INI_NAME_CLIENT    = "client"

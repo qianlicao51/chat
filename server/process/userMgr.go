@@ -25,6 +25,13 @@ func (this *UserMgr) AddOnlineUser(up *UserProcess) {
 	this.onlineUsers[up.UserId] = up
 }
 
+//服务器显示在线用户
+func (this *UserMgr) ShowOnlineUsser() {
+	for _, process := range this.onlineUsers {
+		fmt.Println("在线用户id", process.UserId)
+	}
+}
+
 // del
 func (this *UserMgr) DelOnlineUser(userId int) {
 	delete(this.onlineUsers, userId)

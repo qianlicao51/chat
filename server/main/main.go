@@ -3,11 +3,13 @@ package main
 import (
 	"chat/common/iniconst"
 	"chat/server/model"
+	processSer "chat/server/process"
 	"chat/utils"
 	"fmt"
 	"github.com/huandu/xstrings"
 	"log"
 	"net"
+	"time"
 )
 
 func main() {
@@ -25,6 +27,8 @@ func main() {
 		fmt.Println("server listen error！")
 		return
 	}
+
+	go heartBeatCheck()
 	//端口监听成功，等待客户端连接服务器
 	for {
 		log.Println("等待客户端连接……")
@@ -34,6 +38,19 @@ func main() {
 		}
 		//连接成功，启动协程和客户端保持通信
 		go process(accept)
+	}
+}
+
+//服务端心跳检测
+func heartBeatCheck() {
+	beatProcess := &processSer.HeartBeatProcess{}
+	for {
+		fmt.Println("服务器心跳检测判断客户端是否仍然在线")
+		fmt.Println()
+		fmt.Println()
+		fmt.Println()
+		time.Sleep(5 * time.Second)
+		beatProcess.HeartBeatRequest()
 	}
 }
 
@@ -47,7 +64,7 @@ func initUserDao() {
 func process(conn net.Conn) {
 	defer conn.Close()
 	pr := &Processor{Conn: conn}
-	err := pr.Process2()
+	err := pr.Process()
 	if err != nil {
 		fmt.Println("go 协程出现错误，退出", err)
 		//这里应该是用户CTRL+C 退出了

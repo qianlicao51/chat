@@ -36,8 +36,6 @@ func (this *UserProcess) Login(userId int, userPwd string) (err error) {
 	var loginMes message.LoginMes
 	loginMes.UserId = userId
 	loginMes.UserPwd = userPwd
-	// loginMes序列化
-	//mes.Data=json.Marshal()
 
 	data, err := json.Marshal(loginMes)
 	if err != nil {
@@ -120,6 +118,7 @@ func (this *UserProcess) Login(userId int, userPwd string) (err error) {
 	return
 }
 
+//用户注册
 func (this *UserProcess) Regist(userId int, userPwd, userName string) (err error) {
 	serverAddr := utils2.ConfGetValString(iniconst.INI_NAME_CLIENT, iniconst.CLIENT_TO_SER_ADDR)
 	conn, err := net.Dial("tcp", serverAddr)

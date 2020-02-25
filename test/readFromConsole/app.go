@@ -13,11 +13,10 @@ func main() {
 	//fmt.Println(length,err,str)
 
 	scanln, err := fmt.Scanln(&str)
-	fmt.Println(scanln,err,str)
-
+	fmt.Println(scanln, err, str)
 
 	in := bufio.NewReader(os.Stdin)
 	line, prefix, err := in.ReadLine()
-	fmt.Println(string(line),prefix,err)
+	fmt.Println(string(line), prefix, err)
 
 }

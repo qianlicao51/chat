@@ -50,7 +50,7 @@ func (this *Processor) ServerProcessMes(mes *message.Message) (err error) {
 	}
 	return
 }
-func (this *Processor) Process2() (err error) {
+func (this *Processor) Process() (err error) {
 	//循环的客户端发送的消息
 	for {
 		//创建transform

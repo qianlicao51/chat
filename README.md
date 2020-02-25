@@ -24,3 +24,15 @@ for _, v := range loginResMes.UserIds {
 
 [https://blog.csdn.net/guyan0319/article/details/90240731](https://blog.csdn.net/guyan0319/article/details/90240731)
 
+### 服务器心跳检测 客户端是还在
+
+服务器发送心跳请求到客户端，如果没有回复则从在线列表中删除该用户(客户端意外退出无法捕获 客户端退出的踪迹，所有从服务端判断)
+
+**服务器有客户端的conn,如果数据发送不出去就是 客户端失去联系，不需要等待客户端回应**
+
+## 启动
+
+```
+go build 
+```
+

@@ -46,6 +46,7 @@ func (this *SmsProcess) SendGroupMes(content string) (err error) {
 	}
 	return
 }
+
 //发送私聊消息
 func (this *SmsProcess) SendPrivateMes(userId int, content string) (err error) {
 	//判断是否是在线用户
@@ -64,7 +65,7 @@ func (this *SmsProcess) SendPrivateMes(userId int, content string) (err error) {
 
 	smsMes.UserID = CurUser.UserID
 	smsMes.UserStatus = CurUser.UserStatus
-	smsMes.ChatUserID=userId//私聊对方ID
+	smsMes.ChatUserID = userId //私聊对方ID
 	//3 序列化
 	data, err := json.Marshal(smsMes)
 	if err != nil {

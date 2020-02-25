@@ -16,10 +16,9 @@ type Transfer struct {
 //http://lihaoquan.me/2016/11/5/golang-byteorder.html|go语言的字节序
 func (this *Transfer) ReadPkg() (mes message.Message, err error) {
 	//读取数据包封装为函数|readPkg()
-	fmt.Println("读取客户端发来的数据")
 	_, err = this.Conn.Read(this.Buf[:4])
 	if err != nil {
-		fmt.Println("读取失败2", err)
+		fmt.Println("读取失败", err)
 		return
 	}
 	//fmt.Println("读取到的buf=", this.Buf[:4])

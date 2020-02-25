@@ -29,9 +29,7 @@ gen
 .idea/misc.xml
 .idea/modules.xml
 .idea/vcs.xml
-client/main/client.exe
+client/main/*.exe
 *.exe
 /.idea/
-
-/client/main/client.exe
-/server/main/server.exe
+server/main/*.exe

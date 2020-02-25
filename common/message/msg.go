@@ -10,6 +10,9 @@ const (
 	SmsMesType              = "SmsMes"        //群聊
 	SendFileMesType         = "SendFileMes"   //客户端 向服务器发送文件
 	SmsPrivateMesType       = "SmsPrivateMes" //私聊
+
+	HeartBeatMesType    = "HeartBeatMes"    //	 服务器心跳检测
+	HeartBeatResMesType = "HeartBeatResMes" //客户端相应服务器的心跳检测
 )
 
 // 定义用户状态的常量
