@@ -45,11 +45,8 @@ func main() {
 func heartBeatCheck() {
 	beatProcess := &processSer.HeartBeatProcess{}
 	for {
-		fmt.Println("服务器心跳检测判断客户端是否仍然在线")
-		fmt.Println()
-		fmt.Println()
-		fmt.Println()
-		time.Sleep(5 * time.Second)
+		time.Sleep(20 * time.Second)
+		log.Println("服务器心跳检测判断客户端是否仍然在线")
 		beatProcess.HeartBeatRequest()
 	}
 }
@@ -66,7 +63,7 @@ func process(conn net.Conn) {
 	pr := &Processor{Conn: conn}
 	err := pr.Process()
 	if err != nil {
-		fmt.Println("go 协程出现错误，退出", err)
+		log.Println("go 协程出现错误，退出", err)
 		//这里应该是用户CTRL+C 退出了
 		return
 	}

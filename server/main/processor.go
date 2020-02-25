@@ -33,9 +33,10 @@ func (this *Processor) ServerProcessMes(mes *message.Message) (err error) {
 		//转发消息，完成群聊
 		smsProcess := &process2.SmsProcess{}
 		smsProcess.SendGroupMes(mes)
+
+	//TODO 接受到客户端发送来的文件
 	case message.SendFileMesType:
 		//文件传输服务
-		fmt.Println("接受到客户端发送来的文件")
 		fileProcess := &process2.SendFileProcess{Conn: this.Conn}
 		fileProcess.ReceiveFile(mes)
 

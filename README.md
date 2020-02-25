@@ -30,9 +30,11 @@ for _, v := range loginResMes.UserIds {
 
 **服务器有客户端的conn,如果数据发送不出去就是 客户端失去联系，不需要等待客户端回应**
 
-## 启动
+## 启动|编译
 
-```
-go build 
+```shell
+go build  -o chat_client.exe ./client/main/
+go build  -o chat_server.exe ./server/main/
+#redis配置文件在 conf文件夹中
 ```
 

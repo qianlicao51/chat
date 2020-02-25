@@ -4,8 +4,10 @@ import (
 	"bufio"
 	"chat/client/utils"
 	"chat/common/message"
+	utils2 "chat/utils"
 	"encoding/json"
 	"fmt"
+	"github.com/huandu/xstrings"
 	"net"
 	"os"
 	"strconv"
@@ -14,15 +16,17 @@ import (
 //保持和服务器端的通信
 //显示登录成功后的界面
 func ShowMenu() {
-	fmt.Println("-----登录成功------")
-	fmt.Println("\t\t\t1 显示在线用户列表")
-	fmt.Println("\t\t\t2 发送消息(群发)")
-	fmt.Println("\t\t\t3 信息列表")
-	fmt.Println("\t\t\t4 退出系统")
-	fmt.Println("\t\t\t5 发送文件到服务器")
-	fmt.Println("\t\t\t6 发送消息(私聊)")
-	fmt.Println("---------选择1-4---------")
-
+	utils2.ShowBlackLine(3)
+	fmt.Println(xstrings.Center("菜单列表", 30, "*"))
+	fmt.Println("\t1 显示在线用户列表")
+	fmt.Println("\t2 发送消息(群发)")
+	fmt.Println("\t3 信息列表")
+	fmt.Println("\t4 退出系统")
+	fmt.Println("\t5 发送文件到服务器")
+	fmt.Println("\t6 发送消息(私聊)")
+	fmt.Println(xstrings.Center("选择1-6", 30, "-"))
+	fmt.Printf("\a")
+	utils2.ShowBlackLine(2)
 	var key int
 	var content string
 	//因为总会使用到SmsProcess，创建在此处复用
@@ -33,9 +37,11 @@ func ShowMenu() {
 	case 1:
 		fmt.Println("显示在线用户列表")
 		outputOnlineUser()
+
+	//	TODO 群发消息
 	case 2:
 		fmt.Println("输入给大家发送的消息！！")
-		fmt.Scanf("%s\n", &content)
+		content = utils2.ReadLine(osIn)
 		smsProcess.SendGroupMes(content)
 
 	case 3:
@@ -45,11 +51,10 @@ func ShowMenu() {
 		os.Exit(0)
 
 	case 5:
-		fmt.Println("发送文件到服务器")
-		fmt.Scanf("%s\n", &content)
+		fmt.Println("发送文件到服务器|输入发送文件的全路径")
+		content = utils2.ReadLine(osIn)
 		sendFileServer := &SendFileToServer{}
 		sendFileServer.sendFile(content)
-
 	case 6:
 		//显示在线用户
 		outputOnlineUser()

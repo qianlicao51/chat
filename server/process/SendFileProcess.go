@@ -23,10 +23,8 @@ func (this *SendFileProcess) ReceiveFile(mes *message.Message) (err error) {
 		fmt.Println("~ReceiveFile~", err)
 		return
 	}
-	fmt.Println("传输的文件是：", fileMes.FileName)
 	saveFileBaseDIR := utils2.ConfGetValString(iniconst.INI_NAME_SERVER, iniconst.SERVER_SAVEFILE)
-	openFile, err := os.OpenFile(saveFileBaseDIR+utils2.GetDateStr()+fileMes.FileName, os.O_APPEND|os.O_CREATE, 0666)
-
+	openFile, err := os.OpenFile(saveFileBaseDIR+utils2.GetDateStr()+"_"+fileMes.FileName, os.O_APPEND|os.O_CREATE, 0666)
 	if err != nil {
 		fmt.Println("打开文件错误", err)
 		return

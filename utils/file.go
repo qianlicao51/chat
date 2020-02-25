@@ -15,6 +15,7 @@ func Sha1(data []byte) string {
 	return hex.EncodeToString(_sha1.Sum([]byte("")))
 }
 
+//获取文件 Sha1
 func FileSha1(file *os.File) string {
 	_sha1 := sha1.New()
 	io.Copy(_sha1, file)

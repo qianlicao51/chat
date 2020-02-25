@@ -39,8 +39,6 @@ func main() {
 			err := up.Login(userId, userPwd)
 			if err != nil {
 				fmt.Println("登陆失败")
-			} else {
-				fmt.Println("~登录失败原因~", err)
 			}
 		//loop = false
 		//注册
@@ -57,9 +55,7 @@ func main() {
 			//完成注册
 			err := up.Regist(userId, userPwd, userName)
 			if err != nil {
-				fmt.Println("登陆失败")
-			} else {
-				fmt.Println("~登录失败原因~", err)
+				fmt.Println("注册失败", err)
 			}
 		case 3:
 			fmt.Println("退出系统")
