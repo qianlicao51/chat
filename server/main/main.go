@@ -18,7 +18,7 @@ func main() {
 	initUserDao()
 	//	服务器 监听8889端口
 	serverAddr := utils.ConfGetValString(iniconst.INI_NAME_SERVER, iniconst.SERVER_ADDR)
-	log.Println(xstrings.Center("服务器地址:"+serverAddr,30,"-"))
+	log.Println(xstrings.Center("服务器地址:"+serverAddr, 30, "-"))
 	listen, err := net.Listen("tcp", serverAddr)
 	defer listen.Close()
 	if err != nil {
@@ -50,6 +50,7 @@ func process(conn net.Conn) {
 	err := pr.Process2()
 	if err != nil {
 		fmt.Println("go 协程出现错误，退出", err)
+		//这里应该是用户CTRL+C 退出了
 		return
 	}
 }

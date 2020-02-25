@@ -65,7 +65,8 @@ func (this *UserProcess) Login(userId int, userPwd string) (err error) {
 		fmt.Println("发送(数据长度)失败", err)
 		return
 	}
-	fmt.Println("客户端发送消息 长度成功！", len(data), "发送的数据", string(data))
+	//TODO 删除
+	//fmt.Println("客户端发送消息 长度成功！", len(data), "发送的数据", string(data))
 	//发送消息本身
 	_, err = conn.Write(data)
 	if err != nil {
@@ -87,29 +88,26 @@ func (this *UserProcess) Login(userId int, userPwd string) (err error) {
 
 	//登录成功
 	if loginResMes.Code == 200 {
-		//初始化 CurUser
+		//初始化 CurUser|(用户状态为在线)
 		CurUser.Conn = conn
 		CurUser.UserID = loginMes.UserId
 		CurUser.UserName = loginMes.UserName
 		CurUser.UserStatus = message.UserOnLice
-
 		//显示在线用户
 		fmt.Println("当前在线用户列表如下")
+		fmt.Println(loginResMes.UserIds)
 		for _, v := range loginResMes.UserIds {
-			if v == userId { //不显示当前自己
-				continue
+			if v != userId { //不显示当前自己
+				fmt.Println("在线用户ID:", v)
+				//初始化客户端维护的 在线列表
+				user := &message.User{
+					UserID:     v,
+					UserStatus: message.UserOnLice,
+				}
+				onlineUser[v] = user //TODO 此处导致 查询在线用户不匹配|
 			}
-			fmt.Printf("用户id :%v\n", v)
-			//初始化客户端维护的 在线列表
-			user := &message.User{
-				UserID:     v,
-				UserStatus: message.UserOnLice,
-			}
-			onlineUser[userId] = user
-
 		}
 		fmt.Println("-----------------------")
-
 		//	显示登陆成功的菜单
 		//开启协程，该协程和服务器有数据交互，如果服务器有数据推送给客户端，则接受显示
 		go serverProcessMes(conn)

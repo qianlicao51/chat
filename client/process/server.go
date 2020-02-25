@@ -2,12 +2,12 @@ package process
 
 import (
 	"bufio"
+	"chat/client/utils"
+	"chat/common/message"
 	"encoding/json"
 	"fmt"
 	"net"
 	"os"
-	"chat/client/utils"
-	"chat/common/message"
 	"strconv"
 )
 
@@ -56,13 +56,13 @@ func ShowMenu() {
 		fmt.Println("输入要私聊的用户ID")
 		readLine, _, _ := osIn.ReadLine()
 		sendToUserId, err := strconv.Atoi(string(readLine))
-		if err!=nil {
+		if err != nil {
 			fmt.Println("输入用户的id错误")
 			return
 		}
 		fmt.Println("输入要私聊的内容")
 		sendContent, _, _ := osIn.ReadLine()
-		smsProcess.SendPrivateMes(sendToUserId,string(sendContent))
+		smsProcess.SendPrivateMes(sendToUserId, string(sendContent))
 	default:
 		fmt.Println("输入有误重新输入！")
 		fmt.Println()
@@ -88,7 +88,7 @@ func serverProcessMes(conn net.Conn) {
 		//	读取消息，逻辑处理
 		switch mes.Type {
 		case message.NotifyUserStatusMesType:
-			//	有人上线
+			// 有人上线
 			/**
 			1 取出NotifyUserStatusMes
 			2 把这个用户保存到客户端维护的map[int]User中

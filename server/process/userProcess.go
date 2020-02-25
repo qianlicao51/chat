@@ -1,12 +1,12 @@
 package process2
 
 import (
-	"encoding/json"
-	"fmt"
-	"net"
 	"chat/common/message"
 	"chat/server/model"
 	"chat/server/utils"
+	"encoding/json"
+	"fmt"
+	"net"
 )
 
 type UserProcess struct {
@@ -59,13 +59,10 @@ func (this *UserProcess) NotifyMeOnline(userId int) {
 		fmt.Println("序列化用户状态出错，", err)
 		return
 	}
-
 	//	准备发送
-
 	tr := &utils.Transfer{
 		Conn: this.Conn,
 	}
-
 	err = tr.WritePkg(data)
 	if err != nil {
 		fmt.Println("通知消息的时候发现错误", err)

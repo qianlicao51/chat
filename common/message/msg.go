@@ -2,13 +2,13 @@ package message
 
 //消息类型
 const (
-	LoginMesType            = "LoginMes"
-	LoginResMesType         = "LoginResMes"
-	RegisterMesType         = "RegisterMes"
-	NotifyUserStatusMesType = "NotifyUserStatusMes"
+	LoginMesType            = "LoginMes"            //登录请求
+	LoginResMesType         = "LoginResMes"         //登录响应
+	RegisterMesType         = "RegisterMes"         //注册
+	NotifyUserStatusMesType = "NotifyUserStatusMes" //用户上线通知
 	RegisterResMesType      = "RegisterResMes"
-	SmsMesType              = "SmsMes" //群聊
-	SendFileMesType         = "SendFileMes"
+	SmsMesType              = "SmsMes"        //群聊
+	SendFileMesType         = "SendFileMes"   //客户端 向服务器发送文件
 	SmsPrivateMesType       = "SmsPrivateMes" //私聊
 )
 

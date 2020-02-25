@@ -35,13 +35,15 @@ func (this *Processor) ServerProcessMes(mes *message.Message) (err error) {
 		smsProcess.SendGroupMes(mes)
 	case message.SendFileMesType:
 		//文件传输服务
+		fmt.Println("接受到客户端发送来的文件")
 		fileProcess := &process2.SendFileProcess{Conn: this.Conn}
 		fileProcess.ReceiveFile(mes)
 
 	case message.SmsPrivateMesType:
 		//私聊服务
-		fileProcess := &process2.SendFileProcess{Conn: this.Conn}
-		fileProcess.ReceiveFile(mes)
+		smsPrivate := &process2.SmsPrivateProcess{}
+		fmt.Println("服务器接受到的私聊信息~", mes)
+		smsPrivate.SendPirvateMes(mes)
 	default:
 		fmt.Println("未知类型，无法处理")
 		fmt.Println()
