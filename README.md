@@ -1,5 +1,6 @@
 # chat
 TCP协程聊天
+> 韩顺平视频中的聊天系统，使用了redis,自定义报文协议
 
 ### 问题
 ```
@@ -18,4 +19,8 @@ for _, v := range loginResMes.UserIds {
 ```
 
 ![](pic/2020-02-25_170846.png)
+
+### CTRL+C信号捕获
+
+[https://blog.csdn.net/guyan0319/article/details/90240731](https://blog.csdn.net/guyan0319/article/details/90240731)
 

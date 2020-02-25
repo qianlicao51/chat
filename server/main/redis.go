@@ -6,6 +6,7 @@ import (
 
 var pool *redis.Pool
 
+//初始化redis连接池
 func initPool(address string) {
 	pool = &redis.Pool{
 		Dial: func() (conn redis.Conn, err error) {

@@ -1,10 +1,10 @@
 package model
 
 import (
+	"chat/common/message"
 	"encoding/json"
 	"fmt"
 	"github.com/garyburd/redigo/redis"
-	"chat/common/message"
 )
 
 // 操作Redis
@@ -75,10 +75,8 @@ func (this *UserDao) getUserById(conn redis.Conn, id int) (user *User, err error
 
 // 登录
 func (this *UserDao) Login(userId int, userPwd string) (user *User, err error) {
-
 	conn := this.pool.Get()
 	defer conn.Close()
-
 	user, err = this.getUserById(conn, userId)
 	if err != nil {
 		fmt.Println("err is ", err)

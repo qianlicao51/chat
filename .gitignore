@@ -31,5 +31,7 @@ gen
 .idea/vcs.xml
 client/main/client.exe
 *.exe
-!/.idea/
+/.idea/
 
+/client/main/client.exe
+/server/main/server.exe

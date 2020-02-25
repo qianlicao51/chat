@@ -63,7 +63,7 @@ func (this *Processor) Process2() (err error) {
 				fmt.Println("客户端退出了，服务器也正常退出")
 				return err
 			} else {
-				fmt.Println("未知错我", err)
+				fmt.Println("未知错误", err)
 				return err
 			}
 		}

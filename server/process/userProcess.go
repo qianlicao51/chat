@@ -1,4 +1,4 @@
-package process2
+package processSer
 
 import (
 	"chat/common/message"
@@ -48,11 +48,7 @@ func (this *UserProcess) NotifyMeOnline(userId int) {
 		fmt.Println("序列化用户状态出错，", err)
 		return
 	}
-	fmt.Println("---序列化---")
-	fmt.Println(string(data))
-
 	mes.Data = string(data)
-
 	//	mes再次序列化
 	data, err = json.Marshal(mes)
 	if err != nil {

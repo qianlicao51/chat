@@ -1,4 +1,4 @@
-package process2
+package processSer
 
 import (
 	"chat/common/message"
