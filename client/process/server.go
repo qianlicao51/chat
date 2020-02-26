@@ -35,7 +35,7 @@ func ShowMenu() {
 	fmt.Scanf("%d\n", &key)
 	switch key {
 	case 1:
-		fmt.Println("显示在线用户列表")
+		fmt.Println(xstrings.Center("显示在线用户列表", 30, "*"))
 		outputOnlineUser()
 
 	//	TODO 群发消息
@@ -92,7 +92,7 @@ func serverProcessMes(conn net.Conn) {
 		//	读取消息，逻辑处理
 		switch mes.Type {
 		case message.NotifyUserStatusMesType:
-			// 有人上线
+			// 有人上线|或者下线
 			/**
 			1 取出NotifyUserStatusMes
 			2 把这个用户保存到客户端维护的map[int]User中

@@ -28,7 +28,7 @@ func main() {
 		return
 	}
 
-	go heartBeatCheck()
+	//go heartBeatCheck()
 	//端口监听成功，等待客户端连接服务器
 	for {
 		log.Println("等待客户端连接……")
@@ -54,7 +54,6 @@ func heartBeatCheck() {
 //初始化userdao
 func initUserDao() {
 	model.MyUserDao = model.NewUserDao(pool)
-
 }
 
 //处理和客户端的通信

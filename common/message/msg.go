@@ -5,7 +5,7 @@ const (
 	LoginMesType            = "LoginMes"            //登录请求
 	LoginResMesType         = "LoginResMes"         //登录响应
 	RegisterMesType         = "RegisterMes"         //注册
-	NotifyUserStatusMesType = "NotifyUserStatusMes" //用户上线通知
+	NotifyUserStatusMesType = "NotifyUserStatusMes" //用户上线通知|以及下线|用户状态用常量(位置1)
 	RegisterResMesType      = "RegisterResMes"
 	SmsMesType              = "SmsMes"        //群聊
 	SendFileMesType         = "SendFileMes"   //客户端 向服务器发送文件
@@ -15,6 +15,7 @@ const (
 	HeartBeatResMesType = "HeartBeatResMes" //客户端相应服务器的心跳检测
 )
 
+//TODO 用户状态常量 位置1
 // 定义用户状态的常量
 const (
 	UserOnLice = iota
@@ -36,7 +37,7 @@ type LoginMes struct {
 
 //登录响应
 type LoginResMes struct {
-	Code    int    `json:"code"` //状态码 500 为注册，200 登陆成功
+	Code    int    `json:"code"` //状态码 500 为注册，200 登陆成功|100 用户已经在线
 	UserIds []int  //增加字段，保存用户ID切片
 	Error   string `json:"error"` //返回错误信息
 }

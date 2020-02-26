@@ -64,7 +64,11 @@ func (this *Processor) Process() (err error) {
 				fmt.Println("客户端退出了，服务器也正常退出")
 				return err
 			} else {
+
+				//TODO 客户端意外退出了|这里能判断出是客户端退出了
 				fmt.Println("未知错误", err)
+				heartBeat := &process2.HeartBeatProcess{}
+				heartBeat.OfflineDeals(this.Conn)
 				return err
 			}
 		}

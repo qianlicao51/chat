@@ -30,6 +30,8 @@ for _, v := range loginResMes.UserIds {
 
 **服务器有客户端的conn,如果数据发送不出去就是 客户端失去联系，不需要等待客户端回应**
 
+**<font color='blue'>废弃上面的心跳检测，使用server/process/heartbeatPeocess.go.OfflineDeals因为连接失败是实时的，可以实时检测退出用户并发送通知</font>**
+
 ## 启动|编译
 
 ```shell
@@ -37,4 +39,34 @@ go build  -o chat_client.exe ./client/main/
 go build  -o chat_server.exe ./server/main/
 #redis配置文件在 conf文件夹中
 ```
+
+**Windows编译Mac Linux平台**
+
+```shell
+SET CGO_ENABLED=0
+SET GOOS=darwin
+SET GOARCH=amd64
+go build
+
+SET CGO_ENABLED=0
+SET GOOS=linux
+SET GOARCH=amd64
+go build
+
+```
+
+
+
+
+
+**提交注释**
+
+`eg:version:2020-02-25|服务器心跳检测`
+
+
+
+### 聊天小功能
+
+- [x] 阻止重复登录
+- [x] 发送下线通知
 
