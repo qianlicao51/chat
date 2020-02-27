@@ -19,7 +19,7 @@ func main() {
 	var key int
 	//判断是否还继续显示菜单
 	for {
-		fmt.Println("--------------多人聊天系统--------")
+		fmt.Println("-----------多人聊天系统--------")
 		fmt.Println("|\t\t\t 1 登陆")
 		fmt.Println("|\t\t\t 2 注册")
 		fmt.Println("|\t\t\t 3 退出系统")
