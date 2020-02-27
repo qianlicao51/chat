@@ -33,3 +33,5 @@ client/main/*.exe
 *.exe
 /.idea/
 server/main/*.exe
+*.zip
+chat_server

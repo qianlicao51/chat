@@ -59,7 +59,7 @@ func (this *UserMgr) GetAllOnlineUsers() map[int]*UserProcess {
 //根据id对应
 func (this *UserMgr) GetOnlineUserByID(userId int) (up *UserProcess, err error) {
 	up, ok := this.onlineUsers[userId]
-	if !ok {
+	if ok {
 		err = fmt.Errorf("用户%d不在线", userId)
 		return
 	}
