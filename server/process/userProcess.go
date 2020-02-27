@@ -185,7 +185,6 @@ func (this *UserProcess) ServerProcessLogin(mes *message.Message) (err error) {
 		fmt.Println("序列化失败", err)
 		return
 	}
-
 	//发送|使用了分层，先创建trans实例
 	tf := &utils.Transfer{
 		Conn: this.Conn,
