@@ -18,6 +18,8 @@ func main() {
 	initPool(redisAddr)
 	//初始化userdao
 	initUserDao()
+
+	initServerSaveFileDir()
 	//	服务器 监听8889端口
 	serverAddr := utils.ConfGetValString(iniconst.INI_NAME_SERVER, iniconst.SERVER_ADDR)
 	log.Println(xstrings.Center("服务器地址:"+serverAddr, 30, "-"))
