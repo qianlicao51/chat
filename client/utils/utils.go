@@ -13,7 +13,8 @@ type Transfer struct {
 	Buf  [8064]byte //传输时使用的缓冲
 }
 
-//http://lihaoquan.me/2016/11/5/golang-byteorder.html|go语言的字节序
+//TODO 大端 小段
+//http://lihaoquan.me/2016/11/5/golang-byteorder.html |go语言的字节序
 func (this *Transfer) ReadPkg() (mes message.Message, err error) {
 	//读取数据包封装为函数|readPkg()
 	_, err = this.Conn.Read(this.Buf[:4])
